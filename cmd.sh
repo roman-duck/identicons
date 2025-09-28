@@ -4,6 +4,9 @@ set -e
 if [ "$ENV" = 'dev' ]; then 
     echo "Running development server..."
     exec python "/app/identidock.py"
+elif [ "$ENV" = 'test' ]; then 
+    echo "Running tests..."
+    exec python /app/tests.py
 else
     echo "Running production server..."
     exec uwsgi --http 0.0.0.0:9090 --wsgi-file  /app/identidock.py --callable app --stats 0.0.0.0:9191

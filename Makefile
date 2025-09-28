@@ -9,5 +9,5 @@ run:
 	docker run -d --name redis redis
 	docker run -p 5000:5000 -e "ENV=dev" --link dnmonster:dnmonster --link redis:redis identicons
 
-test:
-	docker run identicons python tests.py
+tests:
+	docker run -e ENV=test identicons
